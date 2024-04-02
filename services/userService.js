@@ -4,9 +4,10 @@ const saltRounds = 10;
 
 async function authenticateUser(username, password) {
   try {
-    const [rows] = await pool.query("SELECT * FROM users WHERE full_name = ?", [
-      username,
-    ]);
+    const [rows] = await pool.query(
+      "SELECT id, full_name, poste, email, password, DATE_FORMAT(created_at, '%d-%m-%Y %H:%i:%s') AS formatted_created_at FROM users WHERE full_name = ?",
+      [username]
+    );
     if (rows.length > 0) {
       const user = { ...rows[0] };
       // Compare the hashed password with the password provided by the user

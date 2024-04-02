@@ -44,17 +44,6 @@
               ></i>
             </a>
           </li>
-          <!-- <li class="nav-item">
-            <a
-              class="nav-link"
-              data-widget="control-sidebar"
-              data-slide="true"
-              href="#"
-              role="button"
-            >
-              <i style="color: rgb(226, 6, 19)" class="fas fa-th-large"></i>
-            </a>
-          </li> -->
         </ul>
       </nav>
       <!-- /.navbar -->
@@ -211,6 +200,15 @@
 
                     <strong><i class="fas fa-envelope mr-1"></i> Email</strong>
                     <p class="text-muted"><%= session.user.email %></p>
+                    <hr />
+
+                    <strong
+                      ><i class="fas fa-calendar-alt mr-1"></i> Compte créer
+                      le</strong
+                    >
+                    <p class="text-muted">
+                      <%= session.user.formatted_created_at %>
+                    </p>
                   </div>
                 </div>
               </div>
