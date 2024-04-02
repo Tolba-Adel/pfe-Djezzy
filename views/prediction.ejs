@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Prédiction d'offres</title>
+    <link href="images/djezzy-logo.png" rel="icon" />
+
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="fontawesome-free/css/all.min.css" />
+    <!-- overlayScrollbars -->
+    <link
+      rel="stylesheet"
+      href="overlayScrollbars/css/OverlayScrollbars.min.css"
+    />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="stylesheets/adminlte.min.css" />
+  </head>
+  <body
+    class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed"
+  >
+    <!-- Site wrapper -->
+    <div class="wrapper">
+      <!-- Navbar -->
+      <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"
+              ><i style="color: rgb(226, 6, 19)" class="fas fa-bars"></i
+            ></a>
+          </li>
+        </ul>
+
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+              <i
+                style="color: rgb(226, 6, 19)"
+                class="fas fa-expand-arrows-alt"
+              ></i>
+            </a>
+          </li>
+          <!-- <li class="nav-item">
+            <a
+              class="nav-link"
+              data-widget="control-sidebar"
+              data-slide="true"
+              href="#"
+              role="button"
+            >
+              <i style="color: rgb(226, 6, 19)" class="fas fa-th-large"></i>
+            </a>
+          </li> -->
+        </ul>
+      </nav>
+      <!-- /.navbar -->
+
+      <!-- Main Sidebar Container -->
+      <aside class="main-sidebar sidebar-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="/" class="brand-link">
+          <img
+            src="images/djezzy-logo.png"
+            alt="Djezzy Logo"
+            class="brand-image"
+          />
+          <span style="color: rgb(226, 6, 19)" class="brand-text">Djezzy</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <!-- Sidebar user -->
+          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+              <img src="../../images/person-circle-outline.svg" />
+            </div>
+            <div class="info">
+              <a
+                style="color: initial; transition: color 0.3s"
+                onmouseover="this.style.color='rgb(226, 6, 19)'"
+                onmouseout="this.style.color='initial'"
+                href="/profile"
+                class="d-block"
+                ><%= session.user.full_name %></a
+              >
+            </div>
+          </div>
+
+          <!-- Sidebar Menu -->
+          <nav class="mt-2">
+            <ul
+              class="nav nav-pills nav-sidebar flex-column"
+              data-widget="treeview"
+              role="menu"
+              data-accordion="false"
+            >
+              <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+              <li class="nav-item">
+                <a
+                  href="/"
+                  style="color: initial; transition: color 0.3s"
+                  onmouseover="this.style.color='rgb(226, 6, 19)'"
+                  onmouseout="this.style.color='initial'"
+                  class="nav-link"
+                >
+                  <i class="nav-icon fas fa-chart-pie"></i>
+                  <p>Dashboard</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a
+                  href="/prediction"
+                  style="background-color: rgb(226, 6, 19)"
+                  class="nav-link active"
+                >
+                  <i class="nav-icon fas fa-book"></i>
+                  <p>Prédiction d'Offres</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a
+                  href="/logout"
+                  style="color: initial; transition: color 0.3s"
+                  onmouseover="this.style.color='rgb(226, 6, 19)'"
+                  onmouseout="this.style.color='initial'"
+                  class="nav-link"
+                >
+                  <i class="fas fa-sign-out-alt nav-icon"></i>
+                  <p>Se déconncter</p>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>Prédiction Offres téléphoniques</h1>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item">
+                    <a style="color: rgb(226, 6, 19)" href="/">Home</a>
+                  </li>
+                  <li class="breadcrumb-item active">Prédiction d'Offres</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="col-md-9 offset-md-1">
+            <div class="card card-danger">
+              <div
+                style="background-color: rgb(226, 6, 19)"
+                class="card-header"
+              >
+                <h3 class="card-title">Formulaire</h3>
+
+                <div class="card-tools">
+                  <i class="fas fa-minus"></i>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="inputName">Numéro de téléphone</label>
+                  <input type="text" id="inputName" class="form-control" />
+                </div>
+                <div class="form-group">
+                  <label for="inputDescription">Input 02</label>
+                  <textarea
+                    id="inputDescription"
+                    class="form-control"
+                    rows="4"
+                  ></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="inputStatus">Input 03</label>
+                  <select id="inputStatus" class="form-control custom-select">
+                    <option selected disabled>Choissiez une option</option>
+                    <option>Option 01</option>
+                    <option>Option 02</option>
+                    <option>Option 03</option>
+                  </select>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <input
+                type="submit"
+                value="Prédire Offre"
+                class="btn btn-danger float-right"
+                style="background-color: rgb(226, 6, 19)"
+              />
+            </div>
+          </div>
+        </section>
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+
+      <!-- <footer class="main-footer"></footer> -->
+
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+      </aside>
+      <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- REQUIRED SCRIPTS -->
+    <!-- jQuery -->
+    <script src="jquery/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <script src="javascripts/adminlte.js"></script>
+    <!-- ChartJS -->
+    <script src="chart.js/Chart.min.js"></script>
+
+    <script src="javascripts/pages/dashboard2.js"></script>
+  </body>
+</html>

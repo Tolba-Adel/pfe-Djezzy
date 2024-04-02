@@ -1,0 +1,51 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00b7ff;
+}
+
+
+/* error message for login and register pages */
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  padding-bottom: 0;
+  padding-left: 20px;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  background-color: #f8f9fa;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.content-wrapper {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.error-page {
+  text-align: center;
+}
+
+.error-content {
+  text-align: center;
+}
