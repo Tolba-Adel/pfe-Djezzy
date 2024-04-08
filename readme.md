@@ -25,11 +25,25 @@
 
 4. Set up the MySQL database:
 
-   - Run the `schema.sql` file.
-   - Update the database configuration in `db.js` with your MySQL credentials.
+   - Adjust the MySQL connection pool configuration in the `db.js` file to utilize your MySQL credentials stored in a `.env` file.
 
-5. Start the application:
+5. Seed the database:
+   ```bash
+   npm run seed
+   ```
+
+6. Start the application:
 
    ```bash
    npm start
    ```
+
+7. Access the app:
+
+   You can access the app through the URL `http://127.0.0.1:3000/`
+
+## User Roles
+
+   After seeding the database an admin account is created with the following credentials:
+   .Username: Administrateur
+   .Password: 00000

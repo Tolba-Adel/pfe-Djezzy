@@ -1,3 +1,4 @@
+const session = require("express-session");
 const userService = require("../services/userService");
 
 async function renderLogin(req, res, next) {
@@ -14,22 +15,18 @@ async function renderLogin(req, res, next) {
 }
 
 async function renderRegister(req, res, next) {
-  try {
-    // if alredy logged in send user to the home page
-    if (req.session.loggedin) {
-      res.redirect("/");
-    } else {
-      res.render("register", {
-        message: "",
-        full_name: "",
-        poste: "",
-        email: "",
-        password: "",
-        password_confirmed: "",
-      });
-    }
-  } catch (error) {
-    next(error);
+  if (req.session.loggedin) {
+    res.render("register", {
+      message: "",
+      full_name: "",
+      poste: "",
+      email: "",
+      password: "",
+      password_confirmed: "",
+      role: "",
+    });
+  } else {
+    res.render("login", { message: "", username: "", password: "" });
   }
 }
 
@@ -65,8 +62,9 @@ async function login(req, res) {
 
 async function register(req, res) {
   try {
-    const { full_name, poste, email, password, password_confirmed } = req.body;
-    if (full_name && poste && email && password && password_confirmed) {
+    const { full_name, poste, email, password, password_confirmed, role } =
+      req.body;
+    if (full_name && poste && email && password && password_confirmed && role) {
       if (password !== password_confirmed) {
         return res.render("register", {
           message: "Les mots de passe ne correspondent pas",
@@ -75,15 +73,17 @@ async function register(req, res) {
           email: email || "",
           password: password || "",
           password_confirmed: password_confirmed || "",
+          role: role || "",
         });
       }
       const user = await userService.registerUser(
         full_name,
         poste,
         email,
-        password
+        password,
+        role
       );
-      res.render("login", { message: "", username: "", password: "" });
+      res.render("index", { session: req.session });
     } else {
       return res.render("register", {
         message: "Veuillez remplir tous les champs!",
@@ -92,6 +92,7 @@ async function register(req, res) {
         email: email || "",
         password: password || "",
         password_confirmed: password_confirmed || "",
+        role: role || "",
       });
     }
   } catch (e) {

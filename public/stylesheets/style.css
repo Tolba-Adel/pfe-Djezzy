@@ -7,7 +7,6 @@ a {
   color: #00b7ff;
 }
 
-
 /* error message for login and register pages */
 .error-message {
   background-color: #f8d7da;
@@ -19,8 +18,6 @@ a {
   border-radius: 5px;
   margin-bottom: 10px;
 }
-
-
 
 body,
 html {

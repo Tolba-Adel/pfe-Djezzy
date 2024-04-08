@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Home Page</title>
     <link href="images/djezzy-logo.png" rel="icon" />
+    <title>Home Page</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link
@@ -33,8 +33,8 @@
           class="animation__wobble"
           src="images/djezzy-logo.png"
           alt="Djezzy Logo"
-          height="60"
-          width="60"
+          height="100"
+          width="100"
         />
       </div>
 
@@ -136,6 +136,55 @@
                   <i class="nav-icon fas fa-book"></i>
                   <p>Prédiction d'Offres</p>
                 </a>
+              </li>
+
+              <li class="nav-item">
+                <a
+                  href="#"
+                  class="nav-link"
+                  style="color: initial; transition: color 0.3s"
+                  onmouseover="this.style.color='rgb(226, 6, 19)'"
+                  onmouseout="this.style.color='initial'"
+                >
+                  <i class="nav-icon fas fa-users-cog"></i>
+                  <p>
+                    Gestion des utilisateurs
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview" style="margin-left: 15px">
+                  <li class="nav-item">
+                    <a
+                      href="/register"
+                      class="nav-link"
+                      style="color: initial; transition: color 0.3s"
+                      onmouseover="this.style.color='rgb(226, 6, 19)'"
+                      onmouseout="this.style.color='initial'"
+                    >
+                      <i
+                        class="fas fa-user-plus nav-icon"
+                        style="font-size: 0.9em"
+                      ></i>
+                      <p>Ajouter un utilisateur</p>
+                    </a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a
+                      href="/users"
+                      class="nav-link"
+                      style="color: initial; transition: color 0.3s"
+                      onmouseover="this.style.color='rgb(226, 6, 19)'"
+                      onmouseout="this.style.color='initial'"
+                    >
+                      <i
+                        class="fas fa-users nav-icon"
+                        style="font-size: 0.9em"
+                      ></i>
+                      <p>Afficher les utilisateurs</p>
+                    </a>
+                  </li>
+                </ul>
               </li>
 
               <li class="nav-item">
@@ -1384,6 +1433,11 @@
 
       <!-- <footer class="main-footer"></footer> -->
     </div>
+
+    <script>
+      // Set the last visited page in localStorage
+      localStorage.setItem("lastVisitedPage", window.location.href);
+    </script>
 
     <!-- REQUIRED SCRIPTS -->
     <!-- jQuery -->

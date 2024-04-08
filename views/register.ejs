@@ -36,6 +36,18 @@
 
           <form action="/register" method="post">
             <div class="input-group mb-3">
+              <select name="role" class="form-control">
+                <option value="user" <% if (role === 'user') { %>selected<% } %>>User</option>
+                <option value="admin" <% if (role === 'admin') { %>selected<% } %>>Admin</option>
+              </select>
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-user-shield"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="input-group mb-3">
               <input
                 name="full_name"
                 type="text"
@@ -118,6 +130,7 @@
 
             <div class="row">
               <div class="col-8"></div>
+
               <div class="col-4">
                 <button
                   style="background-color: rgb(226, 6, 19)"
@@ -130,10 +143,25 @@
             </div>
           </form>
 
-          <a href="/login" class="text-center">Vous avez déjà un Compte?</a>
+          <a href="#" onclick="goBack()">
+            <span
+              style="color: initial; transition: color 0.3s; font-size: larger"
+              onmouseover="this.style.color='rgb(226, 6, 19)'"
+              onmouseout="this.style.color='initial'"
+              class="fas fa-arrow-circle-left"
+            ></span>
+          </a>
         </div>
       </div>
     </div>
+
+    <script>
+      function goBack() {
+        //retreive the last visited page from localStorage
+        const lastVisitedPage = localStorage.getItem("lastVisitedPage");
+        window.location.href = lastVisitedPage;
+      }
+    </script>
 
     <!-- jQuery -->
     <script src="jquery/jquery.min.js"></script>

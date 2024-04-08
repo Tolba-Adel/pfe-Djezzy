@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Liste Utilisateurs</title>
     <link href="images/djezzy-logo.png" rel="icon" />
-    <title>User Profile</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link
@@ -21,9 +21,11 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="stylesheets/adminlte.min.css" />
   </head>
-  <body class="hold-transition sidebar-mini">
+  <body
+    class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed"
+  >
+    <!-- Site wrapper -->
     <div class="wrapper">
-      <!-- Navbar -->
       <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
@@ -44,13 +46,22 @@
               ></i>
             </a>
           </li>
+          <!-- <li class="nav-item">
+            <a
+                class="nav-link"
+                data-widget="control-sidebar"
+                data-slide="true"
+                href="#"
+                role="button"
+            >
+                <i style="color: rgb(226, 6, 19)" class="fas fa-th-large"></i>
+            </a>
+            </li> -->
         </ul>
       </nav>
-      <!-- /.navbar -->
 
       <!-- Main Sidebar Container -->
       <aside class="main-sidebar sidebar-primary elevation-4">
-        <!-- Brand Logo -->
         <a href="/" class="brand-link">
           <img
             src="images/djezzy-logo.png"
@@ -60,19 +71,17 @@
           <span style="color: rgb(226, 6, 19)" class="brand-text">Djezzy</span>
         </a>
 
-        <!-- Sidebar -->
         <div class="sidebar">
-          <!-- Sidebar user -->
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
               <img src="../../images/person-circle-outline.svg" />
             </div>
             <div class="info">
               <a
-                href="/profile"
                 style="color: initial; transition: color 0.3s"
                 onmouseover="this.style.color='rgb(226, 6, 19)'"
                 onmouseout="this.style.color='initial'"
+                href="/profile"
                 class="d-block"
                 ><%= session.user.full_name %></a
               >
@@ -176,98 +185,95 @@
               </li>
             </ul>
           </nav>
-          <!-- /.sidebar-menu -->
         </div>
-        <!-- /.sidebar -->
       </aside>
 
-      <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <section class="content-header">
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1>Page Profile</h1>
+                <h1>Liste des utilisateurs</h1>
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item">
                     <a style="color: rgb(226, 6, 19)" href="/">Home</a>
                   </li>
-                  <li class="breadcrumb-item active">Profile</li>
+                  <li class="breadcrumb-item active">Utilisateurs</li>
                 </ol>
               </div>
             </div>
           </div>
-          <!-- /.container-fluid -->
         </section>
 
         <!-- Main content -->
         <section class="content">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-md-3">
-                <!-- Profile Image -->
-                <div class="card card-danger card-outline">
-                  <div class="card-body box-profile">
-                    <h3 class="profile-username text-center">
-                      <%= session.user.full_name %>
-                    </h3>
-
-                    <!-- <p class="text-muted text-center"></p> -->
-
-                    <ul class="list-group list-group-unbordered mt-4 mb-2">
-                      <li class="list-group-item">
-                        <b>Matricule</b>
-                        <a class="float-right"><%= session.user.id %></a>
-                      </li>
-
-                      <li class="list-group-item">
-                        <b>Role</b>
-                        <a class="float-right"><%= session.user.role %></a>
-                      </li>
-
-                      <li class="list-group-item">
-                        <b>Poste</b>
-                        <a class="float-right"
-                          ><%= session.user.poste ? session.user.poste : "NULL"
-                          %></a
-                        >
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+          <div class="card card-danger">
+            <div style="background-color: rgb(226, 6, 19)" class="card-header">
+              <h3 class="card-title">Utilisateurs</h3>
+              <div class="card-tools">
+                <button
+                  type="button"
+                  class="btn btn-tool"
+                  data-card-widget="collapse"
+                  title="Collapse"
+                >
+                  <i class="fas fa-minus"></i>
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-tool"
+                  data-card-widget="remove"
+                  title="Remove"
+                >
+                  <i class="fas fa-times"></i>
+                </button>
               </div>
-              <div class="col-md-9">
-                <div class="card card-danger">
-                  <div
-                    style="background-color: rgb(226, 6, 19)"
-                    class="card-header"
-                  >
-                    <h3 class="card-title">À propos de moi</h3>
-                  </div>
-                  <div class="card-body mt-2 ml-2">
-                    <strong
-                      ><i class="fas fa-user mr-1"></i> Nom et Prénom</strong
-                    >
-                    <p class="text-muted"><%= session.user.full_name %></p>
-                    <hr />
-
-                    <strong><i class="fas fa-envelope mr-1"></i> Email</strong>
-                    <p class="text-muted"><%= session.user.email %></p>
-                    <hr />
-
-                    <strong
-                      ><i class="fas fa-calendar-alt mr-1"></i> Compte créer
-                      le</strong
-                    >
-                    <p class="text-muted">
-                      <%= session.user.formatted_created_at %>
-                    </p>
-                  </div>
-                </div>
-              </div>
+            </div>
+            <div class="card-body p-0">
+              <table class="table table-striped projects">
+                <thead>
+                  <tr>
+                    <th style="width: 1%">ID</th>
+                    <th style="width: 20%">Nom et Prénom</th>
+                    <th style="width: 22%">Email</th>
+                    <th style="width: 17%">Poste</th>
+                    <th style="width: 20%" class="text-center">
+                      Compte créer le
+                    </th>
+                    <th style="width: 14%"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% users.forEach(function(user) { %>
+                  <tr>
+                    <td><%= user.id %></td>
+                    <td>
+                      <a><%= user.full_name %></a>
+                      <br />
+                      <small><%= user.role %></small>
+                    </td>
+                    <td><%= user.email %></td>
+                    <td><%= user.poste ? user.poste : "NULL" %></td>
+                    <td class="project-state">
+                      <%= user.formatted_created_at %>
+                    </td>
+                    <td class="project-actions text-right">
+                      <form
+                        method="POST"
+                        action="/users/<%= user.id %>?_method=DELETE"
+                      >
+                        <button type="submit" class="btn btn-danger btn-sm">
+                          <i class="fas fa-trash"></i>
+                          Delete
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                  <% }); %>
+                </tbody>
+              </table>
             </div>
           </div>
         </section>

@@ -1,13 +1,15 @@
-const e = require('express');
-const mysql = require('mysql2/promise');
-
+const e = require("express");
+const mysql = require("mysql2/promise");
+const dotenv = require("dotenv");
+dotenv.config();
 
 const pool = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'users_app',
-    // port: '3306',
-  });
+  host: process.env.MYSQL_HOST,
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
+  database: process.env.MYSQL_DATABASE,
+  port: process.env.MYSQL_PORT,
+  multipleStatements: true, // Enable multiple statements
+});
 
- module.exports = pool;
+module.exports = pool;
