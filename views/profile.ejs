@@ -100,6 +100,7 @@
                 </a>
               </li>
 
+              <% if (session.user.role === "admin") { %>
               <li class="nav-item">
                 <a
                   href="/prediction"
@@ -161,6 +162,7 @@
                   </li>
                 </ul>
               </li>
+              <% } %>
 
               <li class="nav-item">
                 <a

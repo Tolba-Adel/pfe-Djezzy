@@ -62,7 +62,8 @@ async function getUsers() {
       DATE_FORMAT(u.created_at, '%d-%m-%Y %H:%i:%s') AS formatted_created_at,
       r.role_name AS role FROM users u LEFT JOIN users_roles ur
       ON u.id = ur.user_id LEFT JOIN roles r ON ur.role_id = r.role_id
-      ORDER BY u.id`);
+      ORDER BY u.id`
+    );
     if (rows.length > 0) {
       return rows;
     }

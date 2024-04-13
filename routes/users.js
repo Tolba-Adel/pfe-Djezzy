@@ -1,8 +1,10 @@
 var express = require("express");
 var router = express.Router();
 const userService = require("../services/userService");
+const { ROLES, authRole } = require("../permissions/auth");
 
-router.get("/", async (req, res) => {
+
+router.get("/", authRole(ROLES.ADMIN), async (req, res) => {
   if (req.session.loggedin) {
     try {
       const users = await userService.getUsers();
@@ -16,11 +18,11 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", authRole(ROLES.ADMIN), async (req, res) => {
   if (req.session.loggedin) {
     try {
       const result = await userService.deleteUser(req.params.id);
-      res.redirect("/users")
+      res.redirect("/users");
     } catch (error) {
       console.error("Error deleting user", error);
       res.status(500).render("500");
