@@ -4,10 +4,11 @@ const pool = require("../db");
 const saltRounds = 10;
 const users = [
   {
-    full_name: "Administrateur",
-    email: "admin@gmail.com",
+    full_name: "Jane Doe",
+    email: "jane.doe@example.com",
     password: "00000",
     role: "admin",
+    poste: "Systems Administrator"
   },
 ];
 
@@ -52,8 +53,8 @@ async function seedDatabase() {
       const hashedPassword = await bcrypt.hash(user.password, saltRounds);
 
       const [result] = await pool.query(
-        "INSERT INTO users (full_name,email,password) VALUES (?,?,?)",
-        [user.full_name, user.email, hashedPassword]
+        "INSERT INTO users (full_name,poste,email,password) VALUES (?,?,?,?)",
+        [user.full_name, user.poste, user.email, hashedPassword]
       );
       const user_id = result.insertId;
 

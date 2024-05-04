@@ -45,5 +45,5 @@
 ## User Roles
 
    After seeding the database an admin account is created with the following credentials:
-   - **Username**: Administrateur
+   - **Username**: Jane Doe
    - **Password**: 00000
