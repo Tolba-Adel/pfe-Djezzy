@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Prédiction d'offres</title>
     <link href="images/djezzy-logo.png" rel="icon" />
+    <title>Prédiction d'offres</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link
@@ -20,6 +20,17 @@
     />
     <!-- Theme style -->
     <link rel="stylesheet" href="stylesheets/adminlte.min.css" />
+
+    <!-- hover effects for buttons -->
+    <style>
+      .custom-btn {
+        transition: transform 0.3s;
+      }
+
+      .custom-btn:hover {
+        transform: scale(1.05);
+      }
+    </style>
   </head>
   <body
     class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed"
@@ -210,7 +221,7 @@
 
         <!-- Main content -->
         <section class="content">
-          <div class="col-md-9 offset-md-1">
+          <div class="col-md-7 offset-md-2">
             <div class="card card-danger">
               <div
                 style="background-color: rgb(226, 6, 19)"
@@ -230,42 +241,35 @@
                 </div>
               </div>
               <div class="card-body">
-                <div class="form-group">
-                  <label for="inputName">Numéro de téléphone</label>
-                  <input type="text" id="inputName" class="form-control" />
-                </div>
-                <div class="form-group">
-                  <label for="inputDescription">Input 02</label>
-                  <textarea
-                    id="inputDescription"
+                <div class="form-group mb-4 mt-3">
+                  <label for="inputPhoneNumber">Numéro de téléphone</label>
+                  <input
+                    type="number"
+                    id="inputPhoneNumber"
+                    min="770000000"
+                    max="799999999"
                     class="form-control"
-                    rows="4"
-                  ></textarea>
+                  />
                 </div>
-                <div class="form-group">
-                  <label for="inputStatus">Input 03</label>
-                  <select id="inputStatus" class="form-control custom-select">
-                    <option selected disabled>Choissiez une option</option>
-                    <option>Option 01</option>
-                    <option>Option 02</option>
-                    <option>Option 03</option>
-                  </select>
+                <div style="display: none" class="form-group">
+                  <label for="inputOffre">Offre</label>
+                  <input type="text" id="inputOffre" class="form-control" />
+                </div>
+                <div class="row">
+                  <div class="col-12 mb-2">
+                    <input
+                      type="submit"
+                      value="Prédire Offre"
+                      class="btn btn-danger custom-btn float-right"
+                      style="background-color: rgb(226, 6, 19)"
+                    />
+                  </div>
                 </div>
               </div>
+
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-          </div>
-
-          <div class="row">
-            <div class="col-12">
-              <input
-                type="submit"
-                value="Prédire Offre"
-                class="btn btn-danger float-right"
-                style="background-color: rgb(226, 6, 19)"
-              />
-            </div>
           </div>
         </section>
       </div>
@@ -288,9 +292,5 @@
     <!-- overlayScrollbars -->
     <script src="overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <script src="javascripts/adminlte.js"></script>
-    <!-- ChartJS -->
-    <script src="chart.js/Chart.min.js"></script>
-
-    <script src="javascripts/pages/dashboard2.js"></script>
   </body>
 </html>

@@ -21,6 +21,17 @@
     />
     <!-- Theme style -->
     <link rel="stylesheet" href="stylesheets/adminlte.min.css" />
+
+    <!-- hover effects for buttons -->
+    <style>
+      .custom-btn {
+        transition: transform 0.3s;
+      }
+
+      .custom-btn:hover {
+        transform: scale(1.05);
+      }
+    </style>
   </head>
   <body class="hold-transition register-page">
     <div class="register-box card card-outline card-danger">
@@ -135,7 +146,7 @@
                 <button
                   style="background-color: rgb(226, 6, 19)"
                   type="submit"
-                  class="btn btn-danger btn-block"
+                  class="btn btn-danger btn-block custom-btn"
                 >
                   Register
                 </button>

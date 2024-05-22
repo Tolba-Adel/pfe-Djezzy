@@ -1,7 +1,7 @@
-body {
+/* body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+} */
 
 a {
   color: #00b7ff;
@@ -16,32 +16,34 @@ a {
   padding-left: 20px;
   border: 1px solid #f5c6cb;
   border-radius: 5px;
+  margin-top: 20px;
   margin-bottom: 10px;
+  text-align: center;
 }
 
-body,
+/* body,
 html {
   height: 100%;
   margin: 0;
   background-color: #f8f9fa;
-}
+} */
 
-.wrapper {
+/* .wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
-}
+} */
 
-.content-wrapper {
+/* .content-wrapper {
   background-color: #f8f9fa;
   padding: 20px;
   border-radius: 5px;
-}
+} */
 
-.error-page {
+/* /* .error-page {
   text-align: center;
-}
+} */
 
 .error-content {
   text-align: center;

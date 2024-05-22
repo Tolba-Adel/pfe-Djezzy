@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Liste Utilisateurs</title>
-    <link href="images/djezzy-logo.png" rel="icon" />
+    <link href="/images/djezzy-logo.png" rel="icon" />
+    <title>Modifier Utilisateur</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
 
     <!-- Google Font: Source Sans Pro -->
     <link
@@ -12,20 +13,32 @@
       href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
     />
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" href="/fontawesome-free/css/all.min.css" />
     <!-- overlayScrollbars -->
     <link
       rel="stylesheet"
-      href="overlayScrollbars/css/OverlayScrollbars.min.css"
+      href="/overlayScrollbars/css/OverlayScrollbars.min.css"
     />
     <!-- Theme style -->
-    <link rel="stylesheet" href="stylesheets/adminlte.min.css" />
+    <link rel="stylesheet" href="/stylesheets/adminlte.min.css" />
+
+    <!-- hover effects for buttons -->
+    <style>
+      .custom-btn {
+        transition: transform 0.3s;
+      }
+
+      .custom-btn:hover {
+        transform: scale(1.05);
+      }
+    </style>
   </head>
   <body
     class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed"
   >
     <!-- Site wrapper -->
     <div class="wrapper">
+      <!-- Navbar -->
       <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
@@ -48,23 +61,25 @@
           </li>
           <!-- <li class="nav-item">
             <a
-                class="nav-link"
-                data-widget="control-sidebar"
-                data-slide="true"
-                href="#"
-                role="button"
+              class="nav-link"
+              data-widget="control-sidebar"
+              data-slide="true"
+              href="#"
+              role="button"
             >
-                <i style="color: rgb(226, 6, 19)" class="fas fa-th-large"></i>
+              <i style="color: rgb(226, 6, 19)" class="fas fa-th-large"></i>
             </a>
-            </li> -->
+          </li> -->
         </ul>
       </nav>
+      <!-- /.navbar -->
 
       <!-- Main Sidebar Container -->
       <aside class="main-sidebar sidebar-primary elevation-4">
+        <!-- Brand Logo -->
         <a href="/" class="brand-link">
           <img
-            src="images/djezzy-logo.png"
+            src="/images/djezzy-logo.png"
             alt="Djezzy Logo"
             class="brand-image"
           />
@@ -193,14 +208,14 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1>Liste des utilisateurs</h1>
+                <h1>Modifier Un Utilisateur</h1>
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item">
                     <a style="color: rgb(226, 6, 19)" href="/">Home</a>
                   </li>
-                  <li class="breadcrumb-item active">Utilisateurs</li>
+                  <li class="breadcrumb-item active">Modifier Utilisateur</li>
                 </ol>
               </div>
             </div>
@@ -209,119 +224,111 @@
 
         <!-- Main content -->
         <section class="content">
-          <form action="/users" method="GET">
-            <div
-              class="input-group mb-3"
-              style="max-width: 450px; margin-left: auto"
-            >
-              <input
-                type="text"
-                name="search"
-                class="form-control"
-                placeholder="Rechercher par Nom"
-                style="border-color: rgb(226, 6, 19)"
-                onfocus="this.style.boxShadow='0 0 5px rgb(226, 6, 19)'"
-                onblur="this.style.boxShadow='none'"
-              />
-              <div class="input-group-append">
-                <button
-                  type="submit"
-                  class="btn btn-danger"
-                  style="background-color: rgb(226, 6, 19)"
-                >
-                  <i class="fas fa-search"></i>
-                </button>
-              </div>
-            </div>
-          </form>
+          <div class="col-md-10 offset-md-1">
+            <div class="card card-danger">
+              <div
+                style="background-color: rgb(226, 6, 19)"
+                class="card-header"
+              >
+                <h3 class="card-title">Formulaire</h3>
 
-          <% if (users) { %>
-          <div class="card card-danger">
-            <div style="background-color: rgb(226, 6, 19)" class="card-header">
-              <h3 class="card-title">Utilisateurs</h3>
-              <div class="card-tools">
-                <button
-                  type="button"
-                  class="btn btn-tool"
-                  data-card-widget="collapse"
-                  title="Collapse"
-                >
-                  <i class="fas fa-minus"></i>
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-tool"
-                  data-card-widget="remove"
-                  title="Remove"
-                >
-                  <i class="fas fa-times"></i>
-                </button>
+                <div class="card-tools">
+                  <button
+                    type="button"
+                    class="btn btn-tool"
+                    data-card-widget="collapse"
+                    title="Collapse"
+                  >
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
               </div>
-            </div>
-            <div class="card-body p-0">
-              <table class="table table-striped projects">
-                <thead>
-                  <tr>
-                    <th style="width: 1%">ID</th>
-                    <th style="width: 14%">Nom et Prénom</th>
-                    <th style="width: 21%">Email</th>
-                    <th style="width: 16%">Poste</th>
-                    <th style="width: 15%">Compte créer le</th>
-                    <th style="width: 14%"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <% users.forEach(function(user) { %>
-                  <tr>
-                    <td><%= user.id %></td>
-                    <td>
-                      <a><%= user.full_name %></a>
-                      <br />
-                      <small><%= user.role %></small>
-                    </td>
-                    <td><%= user.email %></td>
-                    <td><%= user.poste ? user.poste : "NULL" %></td>
-                    <td class="project-state">
-                      <%= user.formatted_created_at %>
-                    </td>
-                    <td class="project-actions text-right">
-                      <form method="GET" action="/users/edit/<%= user.id %>">
-                        <button type="submit" class="btn btn-primary btn-sm">
-                          <i class="fas fa-pencil-alt"></i>
-                          Modifier
-                        </button>
-                      </form>
-                    </td>
-                    <td class="project-actions text-right">
-                      <form
-                        method="POST"
-                        action="/users/<%= user.id %>?_method=DELETE"
+              <div class="card-body">
+                <form method="POST" action="/users/<%= userId %>?_method=PUT">
+                  <div class="form-group">
+                    <label for="inputName">Nom d'Utilisateur</label>
+                    <input
+                      type="text"
+                      id="inputName"
+                      name="full_name"
+                      class="form-control"
+                      value="<%= user.full_name%>"
+                    />
+                  </div>
+                  <!--  -->
+                  <div class="form-group">
+                    <label for="inputPoste">Poste</label>
+                    <input
+                      type="text"
+                      id="inputPoste"
+                      name="poste"
+                      class="form-control"
+                      value="<%= user.poste %>"
+                    />
+                  </div>
+                  <!--  -->
+                  <div class="form-group">
+                    <label for="inputEmail">E-mail</label>
+                    <input
+                      type="email"
+                      id="inputEmail"
+                      name="email"
+                      class="form-control"
+                      value="<%= user.email %>"
+                    />
+                  </div>
+                  <!--  -->
+                  <div class="form-group">
+                    <label for="inputPassword">Nouveau Mot de Passe</label>
+                    <input
+                      type="password"
+                      id="inputPassword"
+                      name="password"
+                      class="form-control"
+                    />
+                  </div>
+                  <!--  -->
+                  <div class="form-group">
+                    <label for="inputConfirmedPassword"
+                      >Confirmation du Nouveau Mot de Passe</label
+                    >
+                    <input
+                      type="password"
+                      id="inputConfirmedPassword"
+                      name="password_confirmed"
+                      class="form-control"
+                    />
+                    <% if (message) { %>
+                    <div class="error-message">
+                      <p><%= message %></p>
+                    </div>
+                    <% } %>
+                  </div>
+                  <!--  -->
+                  <div class="row">
+                    <div class="col-12 mb-2 mt-3">
+                      <button
+                        type="submit"
+                        class="btn btn-danger custom-btn float-right"
+                        style="background-color: rgb(226, 6, 19)"
                       >
-                        <button type="submit" class="btn btn-danger btn-sm">
-                          <i class="fas fa-trash"></i>
-                          Supprimer
-                        </button>
-                      </form>
-                    </td>
-                  </tr>
-                  <% }); %>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <% } else { %>
-          <div
-            class="d-flex justify-content-center align-items-center"
-            style="height: 50vh"
-          >
-            <div class="text-center">
-              <div class="callout callout-danger">
-                <i class="fas fa-user fa-3x mb-3"></i>
-                <p>Aucun utilisateur trouvé avec ce nom.</p>
+                        Modifier
+                      </button>
+                      <input
+                        type="button"
+                        value="Annuler"
+                        class="btn btn-secondary custom-btn float-right mr-2"
+                        onclick="location.href='/users';"
+                      />
+                    </div>
+                  </div>
+                </form>
+                <!-- end buttons row -->
               </div>
+              <!-- /.card-body -->
             </div>
+            <!-- /.card -->
           </div>
-          <% } %>
         </section>
       </div>
 
@@ -337,11 +344,11 @@
 
     <!-- REQUIRED SCRIPTS -->
     <!-- jQuery -->
-    <script src="jquery/jquery.min.js"></script>
+    <script src="/jquery/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- overlayScrollbars -->
-    <script src="overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-    <script src="javascripts/adminlte.js"></script>
+    <script src="/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <script src="/javascripts/adminlte.js"></script>
   </body>
 </html>

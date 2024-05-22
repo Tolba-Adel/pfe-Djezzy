@@ -55,20 +55,65 @@ async function registerUser(full_name, poste, email, password, role) {
   }
 }
 
-async function getUsers() {
+async function getUsers(searchName = null) {
   try {
-    const [rows] = await pool.query(`
+    let query = `
       SELECT u.id, u.full_name, u.poste, u.email, u.password,
       DATE_FORMAT(u.created_at, '%d-%m-%Y %H:%i:%s') AS formatted_created_at,
       r.role_name AS role FROM users u LEFT JOIN users_roles ur
-      ON u.id = ur.user_id LEFT JOIN roles r ON ur.role_id = r.role_id
-      ORDER BY u.id`
-    );
+      ON u.id = ur.user_id LEFT JOIN roles r ON ur.role_id = r.role_id`;
+      
+    if (searchName) {
+      query += ` WHERE u.full_name LIKE '%${searchName}%'`;
+    }
+    query += ` ORDER BY u.id`;
+
+    const [rows] = await pool.query(query);
+
     if (rows.length > 0) {
       return rows;
     }
   } catch (error) {
     console.error("Error getting all the users", error);
+    throw error;
+  }
+}
+
+async function getUser(id) {
+  try {
+    const [user] = await pool.query(
+      "SELECT full_name, poste, email FROM users WHERE id = ?",
+      [id]
+    );
+    return user[0];
+  } catch (error) {
+    console.error("Error getting the user", error);
+    throw error;
+  }
+}
+
+async function updateUser(body, userId) {
+  try {
+    const { full_name, poste, email, password, password_confirmed } = body;
+    if (!password && !password_confirmed) {
+      const [user] = await pool.query(
+        "UPDATE users SET full_name = ?, poste = ?, email = ? WHERE id = ?",
+        [full_name, poste, email, userId]
+      );
+      return user;
+    } else if (password == password_confirmed) {
+      hashedPass = await bcrypt.hash(password, saltRounds);
+
+      const [user] = await pool.query(
+        "UPDATE users SET full_name = ?, poste = ?, email = ?, password = ? WHERE id = ?",
+        [full_name, poste, email, hashedPass, userId]
+      );
+      return user;
+    } else {
+      throw new Error("Passwords do not match");
+    }
+  } catch (error) {
+    console.error("Error updating the users", error);
     throw error;
   }
 }
@@ -100,5 +145,7 @@ module.exports = {
   authenticateUser,
   registerUser,
   getUsers,
+  getUser,
+  updateUser,
   deleteUser,
 };

@@ -31,7 +31,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-app.use(methodOverride('_method'));// to handle DELETE requests from forms
+app.use(methodOverride('_method'));// to handle DELETE and PUT requests from forms
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);

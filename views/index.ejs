@@ -250,7 +250,8 @@
                       style="color: #4169e1"
                       class="info-box-text text-center"
                     >
-                      Nombre D'Appels Vers Djezzy
+                      Nombre D'Appels Vers <br />
+                      Djezzy
                     </span>
                     <span class="info-box-number text-center"> 753 </span>
                   </div>
@@ -265,12 +266,10 @@
                     <i class="fas fa-thumbs-up"></i>
                   </span> -->
 
-                  <div
-                    class="info-box-content text-center"
-                    style="width: 200px"
-                  >
+                  <div class="info-box-content text-center">
                     <span style="color: #4169e1" class="info-box-text">
-                      Nombre D'Appels Vers Ooredoo
+                      Nombre D'Appels Vers <br />
+                      Ooredoo
                     </span>
                     <span class="info-box-number">14,723</span>
                   </div>
@@ -295,7 +294,8 @@
                       style="color: #4169e1"
                       class="info-box-text text-center"
                     >
-                      Nombre D'Appels Vers Mobilis
+                      Nombre D'Appels Vers <br />
+                      Mobilis
                     </span>
                     <span class="info-box-number text-center">22,086</span>
                   </div>
@@ -332,6 +332,7 @@
                   </div>
                   <!-- /.card-header -->
                   <div class="card-body">
+                    <!-- 1st row -->
                     <div class="row">
                       <div class="col-md-12">
                         <p class="text-center">
@@ -341,6 +342,41 @@
                         <div class="chart">
                           <!-- most used packages Chart Canvas -->
                           <canvas id="packagesChart"></canvas>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- 2nd row -->
+                    <div class="row mt-4 mb-4">
+                      <!--  1st chart -->
+                      <div class="col-md-4">
+                        <p class="text-center">
+                          <strong>Distribution des Offres Djezzy</strong>
+                        </p>
+                        <div class="chart">
+                          <!-- Limited/Unlimited Djezzy packages Chart Canvas -->
+                          <canvas id="offresDjezzyChart"></canvas>
+                        </div>
+                      </div>
+                      <!-- 2nd chart -->
+                      <div class="col-md-4">
+                        <p class="text-center">
+                          <strong
+                            >Distribution des Offres Mobilis/Ooredoo</strong
+                          >
+                        </p>
+                        <div class="chart">
+                          <!-- Limited/Unlimited Mobilis/Ooredoo packages Chart Canvas -->
+                          <canvas id="offresAutreChart"></canvas>
+                        </div>
+                      </div>
+                      <!-- 3rd chart -->
+                      <div class="col-md-4">
+                        <p class="text-center">
+                          <strong>Distribution de tous les Offres</strong>
+                        </p>
+                        <div class="chart">
+                          <!-- Limited/Unlimited all packages Chart Canvas -->
+                          <canvas id="offresTousChart"></canvas>
                         </div>
                       </div>
                     </div>
@@ -464,7 +500,10 @@
                               >
                             </p>
                             <!-- Data Consumption Chart Canvas -->
-                            <div class="chart d-flex justify-content-center align-items-center" style="max-height: 500px">
+                            <div
+                              class="chart d-flex justify-content-center align-items-center"
+                              style="max-height: 500px"
+                            >
                               <!-- Data Consumption Chart Canvas -->
                               <canvas
                                 id="dataConsumptionChart"
@@ -481,7 +520,10 @@
                               >
                             </p>
                             <!-- Calls Consumption Chart Canvas -->
-                            <div class="chart d-flex justify-content-center align-items-center" style="max-height: 500px">
+                            <div
+                              class="chart d-flex justify-content-center align-items-center"
+                              style="max-height: 500px"
+                            >
                               <canvas
                                 id="callsConsumptionChart"
                                 style="max-height: 500px"
@@ -498,7 +540,7 @@
                     class="col-md-3 d-flex flex-column justify-content-between"
                   >
                     <!-- Info Boxes will be placed here -->
-                    <div class="info-box mb-5" style="margin-top: auto;" >
+                    <div class="info-box mb-5" style="margin-top: auto">
                       <div class="info-box-content">
                         <span
                           style="color: #4169e1"
