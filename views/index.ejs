@@ -350,7 +350,7 @@
                       <!--  1st chart -->
                       <div class="col-md-4">
                         <p class="text-center">
-                          <strong>Distribution des Offres Djezzy</strong>
+                          <strong>Distribution des Offres Vers Djezzy</strong>
                         </p>
                         <div class="chart">
                           <!-- Limited/Unlimited Djezzy packages Chart Canvas -->
@@ -361,7 +361,8 @@
                       <div class="col-md-4">
                         <p class="text-center">
                           <strong
-                            >Distribution des Offres Mobilis/Ooredoo</strong
+                            >Distribution des Offres Vers
+                            Mobilis/Ooredoo</strong
                           >
                         </p>
                         <div class="chart">
@@ -467,7 +468,7 @@
                 <!--  -->
                 <div class="row">
                   <!-- Users Analysis Card -->
-                  <div class="col-md-9">
+                  <div class="col-md-8">
                     <div class="card">
                       <div class="card-header">
                         <h3 class="card-title">Analyse sur Les Utilisateurs</h3>
@@ -496,7 +497,7 @@
                             <p class="text-center">
                               <strong
                                 >Les 15 utilisateurs ayant la plus grande <br />
-                                consommation de données</strong
+                                consommation de données (Go)</strong
                               >
                             </p>
                             <!-- Data Consumption Chart Canvas -->
@@ -516,7 +517,7 @@
                             <p class="text-center">
                               <strong
                                 >Les 15 utilisateurs ayant la plus grande <br />
-                                consommation d'appels</strong
+                                consommation d'appels (DA)</strong
                               >
                             </p>
                             <!-- Calls Consumption Chart Canvas -->
@@ -536,51 +537,81 @@
                   </div>
 
                   <!-- Space for Info Boxes -->
-                  <div
-                    class="col-md-3 d-flex flex-column justify-content-between"
-                  >
-                    <!-- Info Boxes will be placed here -->
-                    <div class="info-box mb-5" style="margin-top: auto">
-                      <div class="info-box-content">
-                        <span
-                          style="color: #4169e1"
-                          class="info-box-text text-center"
-                          >Nombre Des Paquets Internet</span
-                        >
-                        <span class="info-box-number text-center">105,725</span>
+                  <div class="col-md-4">
+                    <div class="card">
+                      <div class="card-header">
+                        <h3 class="card-title">Consommation par type</h3>
+                        <div class="card-tools">
+                          <button
+                            type="button"
+                            class="btn btn-tool"
+                            data-card-widget="collapse"
+                          >
+                            <i class="fas fa-minus"></i>
+                          </button>
+                          <button
+                            type="button"
+                            class="btn btn-tool"
+                            data-card-widget="remove"
+                          >
+                            <i class="fas fa-times"></i>
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                    <div class="info-box mb-5">
-                      <div class="info-box-content">
-                        <span
-                          style="color: #4169e1"
-                          class="info-box-text text-center"
-                          >Nombre Des Paquets Appels</span
-                        >
-                        <span class="info-box-number text-center">38,050</span>
-                      </div>
-                    </div>
-                    <div class="info-box mb-5">
-                      <div class="info-box-content">
-                        <span
-                          style="color: #4169e1"
-                          class="info-box-text text-center"
-                          >Nombre Des Paquets SMS</span
-                        >
-                        <span class="info-box-number text-center">6,225</span>
-                      </div>
-                    </div>
-                    <div class="info-box mb-5">
-                      <div class="info-box-content">
-                        <span
-                          style="color: #4169e1"
-                          class="info-box-text text-center"
-                          >Nombre Totale Des Paquets</span
-                        >
-                        <span class="info-box-number text-center">150,000</span>
+                      <!-- /.card-header -->
+                      <div class="d-flex flex-column justify-content-between">
+                        <div class="info-box" style="margin-top: 15px">
+                          <div class="info-box-content mb-1">
+                            <span
+                              style="color: #4169e1"
+                              class="info-box-text text-center"
+                              >Consommation Internet</span
+                            >
+                            <span class="info-box-number text-center"
+                              >105,725</span
+                            >
+                          </div>
+                        </div>
+                        <div class="info-box">
+                          <div class="info-box-content mb-2">
+                            <span
+                              style="color: #4169e1"
+                              class="info-box-text text-center"
+                              >Consommation Appels</span
+                            >
+                            <span class="info-box-number text-center"
+                              >38,050</span
+                            >
+                          </div>
+                        </div>
+                        <div class="info-box">
+                          <div class="info-box-content mb-2">
+                            <span
+                              style="color: #4169e1"
+                              class="info-box-text text-center"
+                              >Consommation SMS</span
+                            >
+                            <span class="info-box-number text-center"
+                              >6,225</span
+                            >
+                          </div>
+                        </div>
+                        <div class="info-box">
+                          <div class="info-box-content mb-1">
+                            <span
+                              style="color: #4169e1"
+                              class="info-box-text text-center"
+                              >Consommation Totale</span
+                            >
+                            <span class="info-box-number text-center"
+                              >150,000</span
+                            >
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
+                  <!-- end consommation card -->
                 </div>
                 <!-- end of the users card -->
               </div>

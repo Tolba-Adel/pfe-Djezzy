@@ -48,8 +48,11 @@
           <form action="/register" method="post">
             <div class="input-group mb-3">
               <select name="role" class="form-control">
-                <option value="user" <% if (role === 'user') { %>selected<% } %>>User</option>
-                <option value="admin" <% if (role === 'admin') { %>selected<% } %>>Admin</option>
+                <% roles.forEach(role => { %>
+                  <option value="<%= role.role_name.toLowerCase() %>" <%= role.role_name.toLowerCase() === 'user' ? 'selected' : '' %>>
+                    <%= role.role_name %>
+                  </option>                 
+                <% }); %>
               </select>
               <div class="input-group-append">
                 <div class="input-group-text">

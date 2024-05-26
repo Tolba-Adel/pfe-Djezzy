@@ -246,9 +246,10 @@
                   <input
                     type="number"
                     id="inputPhoneNumber"
-                    min="770000000"
+                    min="700000000"
                     max="799999999"
                     class="form-control"
+                    oninput="validataPhoneNumber()"
                   />
                 </div>
                 <div style="display: none" class="form-group">
@@ -259,6 +260,7 @@
                   <div class="col-12 mb-2">
                     <input
                       type="submit"
+                      id="submitButton"
                       value="Prédire Offre"
                       class="btn btn-danger custom-btn float-right"
                       style="background-color: rgb(226, 6, 19)"
@@ -282,6 +284,21 @@
     <script>
       // Set the last visited page in localStorage
       localStorage.setItem("lastVisitedPage", window.location.href);
+
+      function validataPhoneNumber(){
+        const input = document.getElementById("inputPhoneNumber");
+        const btn = document.getElementById("submitButton");
+
+        const min = parseInt(input.min,10);
+        const max = parseInt(input.max,10);
+        const value = parseInt(input.value,10);
+
+        if(value < min || value > max) {
+          btn.disabled = true;
+        } else {
+          btn.disabled = false;
+        }
+      }
     </script>
 
     <!-- REQUIRED SCRIPTS -->

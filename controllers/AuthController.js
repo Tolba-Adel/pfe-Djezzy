@@ -15,18 +15,24 @@ async function renderLogin(req, res, next) {
 }
 
 async function renderRegister(req, res, next) {
-  if (req.session.loggedin) {
-    res.render("register", {
-      message: "",
-      full_name: "",
-      poste: "",
-      email: "",
-      password: "",
-      password_confirmed: "",
-      role: "",
-    });
-  } else {
-    res.render("login", { message: "", username: "", password: "" });
+  try {
+    if (req.session.loggedin) {
+      const roles = await userService.getRoles();
+      res.render("register", {
+        message: "",
+        full_name: "",
+        poste: "",
+        email: "",
+        password: "",
+        password_confirmed: "",
+        role: "",
+        roles,
+      });
+    } else {
+      res.render("login", { message: "", username: "", password: "" });
+    }
+  } catch (error) {
+    next(error);
   }
 }
 

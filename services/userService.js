@@ -141,6 +141,19 @@ async function deleteUser(id) {
   }
 }
 
+async function getRoles(){
+  try {
+    const [result] = await pool.query(
+      "SELECT role_name FROM roles"
+    )
+    return result;
+  } catch (error) {
+    console.error("Error getting the roles", error);
+    throw error;
+  }
+}
+
+
 module.exports = {
   authenticateUser,
   registerUser,
@@ -148,4 +161,5 @@ module.exports = {
   getUser,
   updateUser,
   deleteUser,
+  getRoles
 };

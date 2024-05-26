@@ -106,7 +106,7 @@ function calculateMedianDataConsumption(
         (row) =>
           row[clientIdIndex] === clientId && row[packageTypeIndex] === "GPRS"
       )
-      .map((row) => parseFloat(row[consumptionIndex]));
+      .map((row) => parseFloat(row[consumptionIndex])/1e9);//convert from bytes to gigabytes
     const userMedianConsumption = median(dataConsumptionValues);
     dataConsumptionlabels.push(clientId);
     dataConsumptionCounts.push(userMedianConsumption);
@@ -199,14 +199,6 @@ function createPackagesChart(labels, counts) {
       plugins: {
         legend: false,
       },
-      scales: {
-        x: {
-          ticks: {
-            maxRotation: 90,
-            minRotation: 90,
-          },
-        },
-      },
     },
   });
 }
@@ -282,14 +274,6 @@ function createVoiceOTAPackagesChart(labels, counts) {
     },
     options: {
       responsive: true,
-      scales: {
-        x: {
-          ticks: {
-            maxRotation: 90,
-            minRotation: 90,
-          },
-        },
-      },
       plugins: {
         legend: false,
       },
@@ -328,14 +312,6 @@ function createVoiceOthersPackagesChart(labels, counts) {
     },
     options: {
       responsive: true,
-      scales: {
-        x: {
-          ticks: {
-            maxRotation: 90,
-            minRotation: 90,
-          },
-        },
-      },
       plugins: {
         legend: false,
       },
@@ -398,7 +374,7 @@ function createCallsConsumptionChart(labels, sums) {
       labels: labels,
       datasets: [
         {
-          label: "Appelles Consommés",
+          label: "Appels Consommés",
           data: sums,
           backgroundColor: [
             "#D2691E", // Chocolate
@@ -595,7 +571,7 @@ const offresDjezzyCounts = [73, 92];
 const offresOthersLabels = ["Illimité", "Limité"];
 const offresOthersCounts = [39, 126];
 const offresAllLabels = ["Illimité", "Limité"];
-const offresAllCounts = [74, 91];
+const offresAllCounts = [112, 218];
 
 fetch(csvFilePath)
   .then((response) => response.text())
