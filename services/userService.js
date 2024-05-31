@@ -62,7 +62,7 @@ async function getUsers(searchName = null) {
       DATE_FORMAT(u.created_at, '%d-%m-%Y %H:%i:%s') AS formatted_created_at,
       r.role_name AS role FROM users u LEFT JOIN users_roles ur
       ON u.id = ur.user_id LEFT JOIN roles r ON ur.role_id = r.role_id`;
-      
+
     if (searchName) {
       query += ` WHERE u.full_name LIKE '%${searchName}%'`;
     }
@@ -141,11 +141,9 @@ async function deleteUser(id) {
   }
 }
 
-async function getRoles(){
+async function getRoles() {
   try {
-    const [result] = await pool.query(
-      "SELECT role_name FROM roles"
-    )
+    const [result] = await pool.query("SELECT role_name FROM roles");
     return result;
   } catch (error) {
     console.error("Error getting the roles", error);
@@ -153,6 +151,21 @@ async function getRoles(){
   }
 }
 
+async function getFeatures(phoneNumber) {
+  try {
+    const [results] = await pool.query(
+      "SELECT data,ota,autres from consommation WHERE phone_number = ?",
+      [phoneNumber]
+    );
+    if (results.length === 0) {
+      return null;
+    }
+    return results[0];
+  } catch (error) {
+    console.error("Error getting the roles", error);
+    throw error;
+  }
+}
 
 module.exports = {
   authenticateUser,
@@ -161,5 +174,6 @@ module.exports = {
   getUser,
   updateUser,
   deleteUser,
-  getRoles
+  getRoles,
+  getFeatures,
 };

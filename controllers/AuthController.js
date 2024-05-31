@@ -68,6 +68,8 @@ async function login(req, res) {
 
 async function register(req, res) {
   try {
+    const roles = await userService.getRoles();
+
     const { full_name, poste, email, password, password_confirmed, role } =
       req.body;
     if (full_name && poste && email && password && password_confirmed && role) {
@@ -80,6 +82,7 @@ async function register(req, res) {
           password: password || "",
           password_confirmed: password_confirmed || "",
           role: role || "",
+          roles,
         });
       }
       const user = await userService.registerUser(
@@ -99,6 +102,7 @@ async function register(req, res) {
         password: password || "",
         password_confirmed: password_confirmed || "",
         role: role || "",
+        roles,
       });
     }
   } catch (e) {

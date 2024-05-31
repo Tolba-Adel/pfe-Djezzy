@@ -30,6 +30,13 @@
       .custom-btn:hover {
         transform: scale(1.05);
       }
+
+      #predictionResult {
+        font-size: 1.2em;
+        padding: 25px;
+        margin-left: 0px;
+        margin-top: 4px;
+      }
     </style>
   </head>
   <body
@@ -228,7 +235,6 @@
                 class="card-header"
               >
                 <h3 class="card-title">Formulaire</h3>
-
                 <div class="card-tools">
                   <button
                     type="button"
@@ -240,38 +246,48 @@
                   </button>
                 </div>
               </div>
-              <div class="card-body">
-                <div class="form-group mb-4 mt-3">
-                  <label for="inputPhoneNumber">Numéro de téléphone</label>
-                  <input
-                    type="number"
-                    id="inputPhoneNumber"
-                    min="700000000"
-                    max="799999999"
-                    class="form-control"
-                    oninput="validataPhoneNumber()"
-                  />
-                </div>
-                <div style="display: none" class="form-group">
-                  <label for="inputOffre">Offre</label>
-                  <input type="text" id="inputOffre" class="form-control" />
-                </div>
-                <div class="row">
-                  <div class="col-12 mb-2">
+              <form action="/prediction" method="POST">
+                <div class="card-body">
+                  <div class="form-group mb-4 mt-3">
+                    <label for="inputPhoneNumber">Numéro de téléphone</label>
                     <input
-                      type="submit"
-                      id="submitButton"
-                      value="Prédire Offre"
-                      class="btn btn-danger custom-btn float-right"
-                      style="background-color: rgb(226, 6, 19)"
+                      type="number"
+                      id="inputPhoneNumber"
+                      name="phoneNumber"
+                      min="700000000"
+                      max="799999999"
+                      class="form-control"
+                      oninput="validatePhoneNumber()"
                     />
                   </div>
+                  <div style="display: none" class="form-group">
+                    <label for="inputOffre">Offre</label>
+                    <input type="text" id="inputOffre" class="form-control" />
+                  </div>
+                  <div class="row">
+                    <div class="col-12 mb-2">
+                      <input
+                        type="submit"
+                        id="submitButton"
+                        value="Prédire"
+                        class="btn btn-danger custom-btn float-right"
+                        style="background-color: rgb(226, 6, 19)"
+                      />
+                    </div>
+                  </div>
                 </div>
-              </div>
-
+              </form>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
+            <% if (predicted_offer) { %>
+            <div id="predictionResult" class="text-center mt-4">
+              <p>
+                L'offre le plus adapté a ce client est :
+                <strong> <%= predicted_offer %> </strong>
+              </p>
+            </div>
+            <% } %>
           </div>
         </section>
       </div>
@@ -285,15 +301,15 @@
       // Set the last visited page in localStorage
       localStorage.setItem("lastVisitedPage", window.location.href);
 
-      function validataPhoneNumber(){
+      function validataPhoneNumber() {
         const input = document.getElementById("inputPhoneNumber");
         const btn = document.getElementById("submitButton");
 
-        const min = parseInt(input.min,10);
-        const max = parseInt(input.max,10);
-        const value = parseInt(input.value,10);
+        const min = parseInt(input.min, 10);
+        const max = parseInt(input.max, 10);
+        const value = parseInt(input.value, 10);
 
-        if(value < min || value > max) {
+        if (value < min || value > max) {
           btn.disabled = true;
         } else {
           btn.disabled = false;
